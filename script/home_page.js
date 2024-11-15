@@ -1,7 +1,7 @@
 const yearSpan = document.getElementById('current-year')
 yearSpan.innerText = new Date().getFullYear()
 
-const url = 'https://striveschool-api.herokuapp.com/api/product/'
+const url = 'https://striveschool-api.herokuapp.com/api/product'
 
 // Prima recupera i prodotti esistenti
 fetch(url, {
@@ -22,17 +22,16 @@ fetch(url, {
     console.log('Prodotti esistenti:', products)
     const row = document.getElementById('product-row')
     products.forEach((product) => {
-      // Cambiato "concert" in "product"
       const newCol = document.createElement('div')
-      newCol.classList.add('col', 'col-12', 'col-md-6', 'col-lg-4')
+      newCol.classList.add('col', 'col-12', 'col-md-6', 'col-lg-4', 'mb-5')
       newCol.innerHTML = `
             <div class="card">
-                <img src="https://www.adobe.com/creativecloud/photography/discover/media_15955bf89f635a586d897b5c35f7a447b495f6ed7.jpeg?width=1200&format=pjpg&optimize=medium" class="card-img-top" alt="...">
+                <img src="https://www.giuseppevitagliano.it/wp-content/uploads/2023/03/Canon-EOS-2000D-la-tua-fotocamera-reflex-accessibile.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${product.name}</h5>
                     <p class="card-text">${product.description}</p>
                     <p class="card-text">${product.price}€</p> <!-- Rimosso la parentesi graffa in eccesso -->
-                    <a href="./details.html?concertId=${product._id}" class="btn btn-primary">Vai ai dettagli!</a>
+                    <a href="./dettagli.html?productId=${product.id}" class="btn btn-primary">Vai ai dettagli!</a>
                 </div>
             </div>
         `
